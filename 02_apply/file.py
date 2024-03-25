@@ -1,22 +1,22 @@
 # file_read.py 파일이 있는 디렉토리에서 실행하여야 한다.
 # 다른 경로에서 실행하면 파일을 찾을 수 없다는 에러가 발생한다.
-with open("data/chicken.txt", "r") as file:
-    for line in file:
-        # strip() 함수는 문자열의 앞뒤 공백을 제거한다.
-        print(line.strip())
+# with open("data/chicken.txt", "r") as file:
+#     for line in file:
+#         # strip() 함수는 문자열의 앞뒤 공백을 제거한다.
+#         print(line.strip())
 
-#split() 함수는 문자열을 특정 문자로 나누어 리스트로 만들어 준다.
-my_split = "1. 2. 3. 4. 5. 6"
-print(my_split.split(". "))
+# #split() 함수는 문자열을 특정 문자로 나누어 리스트로 만들어 준다.
+# my_split = "1. 2. 3. 4. 5. 6"
+# print(my_split.split(". "))
 
-print("1 2 \n\n 3      4  5 \n 6".split())
+# print("1 2 \n\n 3      4  5 \n 6".split())
 
-with open("data/new_file.txt", "w") as file:
-    file.write("Hello, Python!\n")
-    file.write("안녕하세요. 파이썬!\n")
+# with open("data/new_file.txt", "w") as file:
+#     file.write("Hello, Python!\n")
+#     file.write("안녕하세요. 파이썬!\n")
 
-with open("data/new_file.txt", "a") as file:
-    file.write("Append a new line!\n")
+# with open("data/new_file.txt", "a") as file:
+#     file.write("Append a new line!\n")
 
 ############################################################
 '''
@@ -59,14 +59,14 @@ data 폴더의 chicken.txt 파일을 읽어 들이고, strip과 split을 써서 
 참고로 현재 제공된 파일에는 31일이 있지만, 어떤 달은 31일이 아닐 수도 있습니다. 
 이 점을 고려해서 확장성 있는 코드를 작성해 주시길 바랍니다.
 '''
-total = []
-with open("data/chicken.txt") as file:
-    for line in file:
-        split = line.split("일: ")
-        total.append(int(split[1]))
+# total = []
+# with open("data/chicken.txt") as file:
+#     for line in file:
+#         split = line.split("일: ")
+#         total.append(int(split[1]))
 
-total_sum = sum(total) / len(total)
-print (total_sum)
+# total_sum = sum(total) / len(total)
+# print (total_sum)
 
 ############################################################
 '''
@@ -77,24 +77,24 @@ vocabulary.txt라는 새로운 텍스트 파일에 단어와 뜻을 정리하는
 사용자는 반복적으로 단어와 뜻을 입력하는데, 단어나 뜻으로 q를 입력하는 순간 프로그램은 즉시 종료됩니다. 
 사용자가 q를 입력하고 나면 파일은 더 이상 바뀌지 않아야 합니다.
 '''
-EXIT_STRING = "q"
+# EXIT_STRING = "q"
 
-with open("data/vocabulary.txt", "a") as file:
-    is_exit = False
-    word_en = ""
-    word_ko = ""
-    while not is_exit:
-        word_en = input("영어 단어를 입력하세요: ")
-        if word_en == EXIT_STRING:
-            is_exit = True
-            break;
-        word_ko = input("한국어 뜻을 입력하세요: ")
-        if word_ko == EXIT_STRING:
-            is_exit = True
-            break;
+# with open("data/vocabulary.txt", "a") as file:
+#     is_exit = False
+#     word_en = ""
+#     word_ko = ""
+#     while not is_exit:
+#         word_en = input("영어 단어를 입력하세요: ")
+#         if word_en == EXIT_STRING:
+#             is_exit = True
+#             break;
+#         word_ko = input("한국어 뜻을 입력하세요: ")
+#         if word_ko == EXIT_STRING:
+#             is_exit = True
+#             break;
         
-        if not is_exit:
-            file.write(f"{word_en}: {word_ko}\n")
+#         if not is_exit:
+#             file.write(f"{word_en}: {word_ko}\n")
 
 ############################################################
 '''
@@ -105,13 +105,46 @@ with open("data/vocabulary.txt", "a") as file:
 정답은 OOO입니다.가 출력되어야 합니다.
 문제를 내는 순서는 vocabulary.txt에 정리된 순서입니다.
 '''
+# with open("data/vocabulary.txt", "r") as file:
+#     for line in file:
+#         list = line.split(": ")
+#         word_en = list[0].strip()
+#         word_ko = list[1].strip()
+#         answer = input(f"{word_en} :").strip()
+#         if answer == word_ko:
+#             print("정답입니다.")
+#         else:
+#             print(f"아쉽습니다. 정답은 {word_ko}입니다.")
+
+############################################################
+'''
+'''
+import random
+
+word_en_list = []
+word_ko_list = []
 with open("data/vocabulary.txt", "r") as file:
     for line in file:
         list = line.split(": ")
-        word_en = list[0].strip()
-        word_ko = list[1].strip()
-        answer = input(f"{word_en} :").strip()
-        if answer == word_ko:
-            print("정답입니다.")
-        else:
-            print(f"아쉽습니다. 정답은 {word_ko}입니다.")
+        word_en_list.append(list[0].strip())
+        word_ko_list.append(list[1].strip())
+
+while True:
+    pick = random.randint(0, len(word_en_list) - 1)
+
+    pick_word_en = word_en_list[pick]
+    pick_word_ko = word_ko_list[pick]
+
+    input_word_en = input(f"{pick_word_ko} : ")
+
+    if (input_word_en == "q"):
+        break
+    
+    if (input_word_en == pick_word_en):
+        print("맞았습니다.")
+    else:
+        print(f"아쉽습니다. 정답은 {pick_word_en}입니다.")
+
+
+
+

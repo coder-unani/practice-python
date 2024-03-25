@@ -1,2 +1,7 @@
 apple: 사과
 tree: 나무
+apple: 사과
+snow: 눈
+sea: 바다
+mountain: 산
+sky: 하늘
