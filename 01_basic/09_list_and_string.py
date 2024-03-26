@@ -147,33 +147,22 @@ A
 B
 E
 J
+
 for 반복문
 두 자료형은 공통적으로 인덱싱이 가능합니다. 따라서 for 반복문에도 활용할 수 있습니다.
 
 
 # 알파벳 리스트의 반복문
-alphabets_list = ['C', 'O', 'D', 'E', 'I', 'T']
+alphabets_list = ['U', 'N', 'A', 'N', 'I']
 for alphabet in alphabets_list:
     print(alphabet)
 
 # 알파벳 문자열의 반복문
-alphabets_string = 'CODEIT'
+alphabets_string = 'UNANI'
 for alphabet in alphabets_string:
     print(alphabet)
 
-C
-O
-D
-E
-I
-T
-
-C
-O
-D
-E
-I
-T
+    
 슬라이싱 (Slicing)
 두 자료형은 공통적으로 슬라이싱이 가능합니다.
 
@@ -240,13 +229,13 @@ print(numbers)
 
 
 # 문자열 데이터 바꾸기
-name = "codeit"
-name[0] = "C"
+name = "unani"
+name[0] = "U"
 print(name)
 
 Traceback (most recent call last):
   File "untitled.py", line 3, in <module>
-    name[0] = "C"
+    name[0] = "U"
 TypeError: 'str' object does not support item assignment
-문자열 name의 인덱스 0 에 "C"를 새롭게 지정해주었더니 오류가 나왔습니다. TypeError: 'str' object does not support item assignment는 문자열은 변형이 불가능하다는 메시지입니다. 이처럼 문자열은 리스트와 달리 데이터의 생성, 삭제, 수정이 불가능합니다.
+문자열 name의 인덱스 0 에 "U"를 새롭게 지정해주었더니 오류가 나왔습니다. TypeError: 'str' object does not support item assignment는 문자열은 변형이 불가능하다는 메시지입니다. 이처럼 문자열은 리스트와 달리 데이터의 생성, 삭제, 수정이 불가능합니다.
 '''
